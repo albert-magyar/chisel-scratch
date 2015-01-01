@@ -11,6 +11,14 @@ object Main {
         chiselMainTest(rArgs, () => Module(new OrderedPrints())){
           c => new OrderedPrintsTester(c)
         }
+      case "TreePLRUTester" =>
+        chiselMainTest(rArgs, () => Module(new TreePLRUTop(2,4))){
+          c => new TreePLRUTester(c)
+        }
+      case "VLSTreePLRUTester" =>
+        chiselMainTest(rArgs, () => Module(new VLSTreePLRUTop(2,4))){
+          c => new VLSTreePLRUTester(c)
+        }
     }
   }
 }
