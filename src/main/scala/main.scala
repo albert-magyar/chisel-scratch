@@ -19,6 +19,10 @@ object Main {
         chiselMainTest(rArgs, () => Module(new VLSTreePLRUTop(2,4))){
           c => new VLSTreePLRUTester(c)
         }
+      case "SplitDecoupledExampleTester" =>
+        chiselMainTest(rArgs, () => Module(new SplitDecoupledExample(10))){
+          c => new SplitDecoupledExampleTester(c)
+        }
     }
   }
 }
