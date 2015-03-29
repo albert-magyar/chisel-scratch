@@ -1,4 +1,4 @@
-package ChiselScratch.USRP.chisel
+package ChiselScratch.USRP.bundles
 
 import Chisel._
 import ChiselScratch.USRP.common._

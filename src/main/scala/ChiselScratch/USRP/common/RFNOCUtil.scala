@@ -1,4 +1,4 @@
-package ChiselScratch.USRP.chisel
+package ChiselScratch.USRP.common
 
 import Chisel._
 
@@ -24,6 +24,22 @@ class StreamPayload(dataWidth: Int = 16) extends Bundle {
     = { new StreamPayload(dataWidth).asInstanceOf[this.type] };
 }
 
+object Sample {
+  def apply(elementWidth: Int = 16) = {
+    new Sample(Complex(SInt(width = elementWidth),SInt(width = elementWidth)),Bool())
+  }
+}
+
+class Sample(val data: Complex[SInt], val last: Bool) extends Bundle {
+  override def clone: this.type
+    = { new Sample(data.clone,last.clone).asInstanceOf[this.type] };
+  def + (r: Sample): Sample = {
+    new Sample(new Complex(data.real + r.data.real, data.imag + r.data.imag), last && last)
+  }
+  def - (r: Sample): Sample = {
+    new Sample(new Complex(data.real - r.data.real, data.imag - r.data.imag), last && last)
+  }
+}
 
 object PackedSIMD {
   def apply(x: Bits, y: Bits, fullWidth: Int, numElements: Int, f: (Bits, Bits) => Data): Data = {

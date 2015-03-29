@@ -19,14 +19,24 @@ object Main {
         chiselMainTest(rArgs, () => Module(new VLSTreePLRUTop(2,4))){
           c => new VLSTreePLRUTester(c)
         }
-      case "USRP.chisel.SplitDecoupledExampleTester" =>
-        chiselMainTest(rArgs, () => Module(new USRP.chisel.SplitDecoupledExample(10))){
-          c => new USRP.chisel.SplitDecoupledExampleTester(c)
+      case "USRP.common.SplitDecoupledExampleTester" =>
+        chiselMainTest(rArgs, () => Module(new USRP.common.SplitDecoupledExample(10))){
+          c => new USRP.common.SplitDecoupledExampleTester(c)
         }
       case "USRP.chisel.AddSub" =>
         chiselMain(rArgs, () => Module(new USRP.chisel.AddSub()))
       case "USRP.chisel.AddSubWrapper" =>
         chiselMain(rArgs, () => Module(new USRP.chisel.AddSubWrapper()))
+      case "USRP.chisel.AddSubComplex" =>
+        chiselMain(rArgs, () => Module(new USRP.chisel.AddSubComplex()))
+      case "USRP.basic.AddSub" =>
+        chiselMain(rArgs, () => Module(new USRP.basic.AddSub()))
+      case "USRP.basic.AddSubWrapper" =>
+        chiselMain(rArgs, () => Module(new USRP.basic.AddSubWrapper()))
+      case "USRP.bundles.AddSub" =>
+        chiselMain(rArgs, () => Module(new USRP.bundles.AddSub()))
+      case "USRP.bundles.AddSubWrapper" =>
+        chiselMain(rArgs, () => Module(new USRP.bundles.AddSubWrapper()))
     }
   }
 }

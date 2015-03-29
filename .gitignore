@@ -5,3 +5,4 @@
 target/
 generated-src/
 *.v
+*#
