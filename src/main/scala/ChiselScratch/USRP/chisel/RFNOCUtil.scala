@@ -17,6 +17,14 @@ class Axi4Stream[+T <: Data](gen: T) extends DecoupledIO(WithLast(gen)) {
   def data: T = bits.data
 }
 
+class StreamPayload(dataWidth: Int = 16) extends Bundle {
+  val data = Bits(width = dataWidth)
+  val last = Bool()
+  override def clone: this.type
+    = { new StreamPayload(dataWidth).asInstanceOf[this.type] };
+}
+
+
 object PackedSIMD {
   def apply(x: Bits, y: Bits, fullWidth: Int, numElements: Int, f: (Bits, Bits) => Data): Data = {
     var result:Seq[Data] = Seq[Data]()

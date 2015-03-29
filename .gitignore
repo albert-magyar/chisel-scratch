@@ -3,3 +3,5 @@
 *.o
 *~
 target/
+generated-src/
+*.v
