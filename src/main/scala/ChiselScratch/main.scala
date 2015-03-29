@@ -3,7 +3,7 @@ package ChiselScratch
 import Chisel._
 
 object Main {
-  def main(args: Array[String]): Unit = { 
+  def main(args: Array[String]): Unit = {
     val rArgs  = args.slice(1, args.length)
 
     args(0) match {
@@ -19,10 +19,14 @@ object Main {
         chiselMainTest(rArgs, () => Module(new VLSTreePLRUTop(2,4))){
           c => new VLSTreePLRUTester(c)
         }
-      case "SplitDecoupledExampleTester" =>
-        chiselMainTest(rArgs, () => Module(new SplitDecoupledExample(10))){
-          c => new SplitDecoupledExampleTester(c)
+      case "USRP.chisel.SplitDecoupledExampleTester" =>
+        chiselMainTest(rArgs, () => Module(new USRP.chisel.SplitDecoupledExample(10))){
+          c => new USRP.chisel.SplitDecoupledExampleTester(c)
         }
+      case "USRP.chisel.AddSub" =>
+        chiselMain(rArgs, () => Module(new USRP.chisel.AddSub()))
+      case "USRP.chisel.AddSubWrapper" =>
+        chiselMain(rArgs, () => Module(new USRP.chisel.AddSubWrapper()))
     }
   }
 }
