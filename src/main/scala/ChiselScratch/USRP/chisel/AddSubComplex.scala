@@ -10,6 +10,7 @@ class AddSubComplex(dataWidth: Int = 16) extends Module {
 
   sum_q.io.enq.bits := io.i0.bits + io.i1.bits
   diff_q.io.enq.bits := io.i0.bits - io.i1.bits
+  SyncDecoupled(GroupDecoupled(io.i0,io.i1),GroupDecoupled(sum_q.io.enq,diff_q.io.enq))
 
   io.sum.bits := sum_q.io.deq.bits
   io.diff.bits := diff_q.io.deq.bits
