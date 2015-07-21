@@ -7,6 +7,8 @@ object Main {
     val rArgs  = args.slice(1, args.length)
 
     args(0) match {
+      case "Vscale" =>
+        chiselMain(rArgs, () => Module(new Vscale()))
       case "TreePLRUTester" =>
         chiselMainTest(rArgs, () => Module(new TreePLRUTop(2,4))){
           c => new TreePLRUTester(c)
