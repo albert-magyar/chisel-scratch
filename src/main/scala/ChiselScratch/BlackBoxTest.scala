@@ -4,7 +4,8 @@ import Chisel._
 
 class VscaleBlackBox extends BlackBox {
   val io = new Bundle {
-    val clk = Bool(INPUT).setName("clk")
+    val clk = Bool(INPUT)
+    clk.setName("clk")
   }
 }
 
