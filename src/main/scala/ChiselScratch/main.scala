@@ -7,10 +7,6 @@ object Main {
     val rArgs  = args.slice(1, args.length)
 
     args(0) match {
-      case "OrderedPrintsTester" =>
-        chiselMainTest(rArgs, () => Module(new OrderedPrints())){
-          c => new OrderedPrintsTester(c)
-        }
       case "TreePLRUTester" =>
         chiselMainTest(rArgs, () => Module(new TreePLRUTop(2,4))){
           c => new TreePLRUTester(c)
@@ -37,6 +33,8 @@ object Main {
         chiselMain(rArgs, () => Module(new USRP.bundles.AddSub()))
       case "USRP.bundles.AddSubWrapper" =>
         chiselMain(rArgs, () => Module(new USRP.bundles.AddSubWrapper()))
+      case "RepeatedLBarrelShift" =>
+        chiselMain(rArgs, () => Module(new RepeatedLBarrelShift(33)))
     }
   }
 }
